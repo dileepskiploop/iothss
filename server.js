@@ -17,3 +17,5 @@ app.get('/count',function(req,res){
 	res.header('Access-Control-Allow-Origin','*');
 	res.send(app.locals.count);
 });
+
+//Testing push sync from github
