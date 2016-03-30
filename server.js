@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var shelljs = require('shelljs');
 var url = "https://iothssnew-dsouzaedison.c9users.io/intruder";
 // var url = "http://localhost:3000/intruder";
 app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0",function(){
@@ -41,4 +42,13 @@ app.get('/login/:user/:pass',function(req,res){
 
 app.get('/img',function(req,res){
 	res.sendFile(__dirname + '/img/img.png');
+});
+
+
+app.get('/pull',function(req, res) {
+	if (shelljs.exec('git pull origin master')!== 0) {
+  		console.log('Error: Git pull failed');
+	}
+	else console.log("Pull Successful");
+	res.end("Request Recieved!");
 });
