@@ -46,6 +46,7 @@ app.get('/img',function(req,res){
 
 
 app.get('/pull',function(req, res) {
+	shelljs.exec('git stash');
 	if (shelljs.exec('git pull origin master')!== 0) {
   		console.log('Error: Git pull failed');
 	}
@@ -53,4 +54,4 @@ app.get('/pull',function(req, res) {
 	res.end("Request Recieved!");
 });
 
-//Testing shelljs pull
+//Testing shelljs pull resethard
